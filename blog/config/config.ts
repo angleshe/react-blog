@@ -128,7 +128,7 @@ export default {
     // },
     {
       path: '/',
-      component: '../layouts/Test',
+      component: '../layouts/MainLayout',
     },
 
     {

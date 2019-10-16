@@ -5,7 +5,7 @@ import { Row, Col, Menu, Icon } from 'antd';
 const Header: React.FC = () => (
   <div className={styles.header}>
     <Row type="flex" justify="center">
-      <Col xs={24} sm={24} md={10} lg={10} xl={6}>
+      <Col xs={24} sm={24} md={10} lg={15} xl={12}>
         <span className={styles['header-logo']}>技术胖</span>
         <span className={styles['header-text']}>专注前端开发,每年100集免费视频。</span>
       </Col>
