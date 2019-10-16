@@ -86,45 +86,49 @@ export default {
   devtool: isAntDesignProPreview ? 'source-map' : false,
   // umi routes: https://umijs.org/zh/guide/router.html
   routes: [
-    {
-      path: '/user',
-      component: '../layouts/UserLayout',
-      routes: [
-        {
-          name: 'login',
-          path: '/user/login',
-          component: './user/login',
-        },
-      ],
-    },
+    // {
+    //   path: '/user',
+    //   component: '../layouts/UserLayout',
+    //   routes: [
+    //     {
+    //       name: 'login',
+    //       path: '/user/login',
+    //       component: './user/login',
+    //     },
+    //   ],
+    // },
+    // {
+    //   path: '/',
+    //   component: '../layouts/SecurityLayout',
+    //   routes: [
+    //     {
+    //       path: '/',
+    //       component: '../layouts/BasicLayout',
+    //       authority: ['admin', 'user'],
+    //       routes: [
+    //         {
+    //           path: '/',
+    //           redirect: '/welcome',
+    //         },
+    //         {
+    //           path: '/welcome',
+    //           name: 'welcome',
+    //           icon: 'smile',
+    //           component: './Welcome',
+    //         },
+    //         {
+    //           component: './404',
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       component: './404',
+    //     },
+    //   ],
+    // },
     {
       path: '/',
-      component: '../layouts/SecurityLayout',
-      routes: [
-        {
-          path: '/',
-          component: '../layouts/BasicLayout',
-          authority: ['admin', 'user'],
-          routes: [
-            {
-              path: '/',
-              redirect: '/welcome',
-            },
-            {
-              path: '/welcome',
-              name: 'welcome',
-              icon: 'smile',
-              component: './Welcome',
-            },
-            {
-              component: './404',
-            },
-          ],
-        },
-        {
-          component: './404',
-        },
-      ],
+      component: '../layouts/Test',
     },
 
     {
@@ -179,6 +183,7 @@ export default {
     basePath: '/',
   },
   chainWebpack: webpackPlugin,
+  ssr: true,
   /*
   proxy: {
     '/server/api/': {
