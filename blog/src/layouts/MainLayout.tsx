@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import styles from './MainLayout.less';
 import Author from '@/components/Author';
 import Advert from '@/components/Advert';
+import Footer from '@/components/Footer';
 
 const MainLayout: React.FC = props => (
   <div className={styles['main-layout']}>
@@ -17,6 +18,7 @@ const MainLayout: React.FC = props => (
         <Advert />
       </Col>
     </Row>
+    <Footer />
   </div>
 );
 
