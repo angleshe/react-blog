@@ -17,7 +17,7 @@ const Item: (item: IArticle) => React.ReactNode = item => (
       </span>
       <span>
         <Icon type="folder" />
-        视频教程dd
+        视频教程
       </span>
       <span>
         <Icon type="fire" />

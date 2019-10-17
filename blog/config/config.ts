@@ -137,7 +137,7 @@ export default {
         {
           path: '/home',
           name: '首页',
-          component: './Home',
+          component: './home',
         },
       ],
     },
