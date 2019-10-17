@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import { Row, Col } from 'antd';
 import styles from './MainLayout.less';
 import Author from '@/components/Author';
+import Advert from '@/components/Advert';
 
 const MainLayout: React.FC = props => (
   <div className={styles['main-layout']}>
@@ -13,6 +14,7 @@ const MainLayout: React.FC = props => (
       </Col>
       <Col xs={0} sm={0} md={7} lg={5} xl={4} className={styles['comm-right']}>
         <Author />
+        <Advert />
       </Col>
     </Row>
   </div>
