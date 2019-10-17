@@ -10,8 +10,8 @@ const MainLayout: React.FC = props => (
   <div className={styles['main-layout']}>
     <Header />
     <Row type="flex" justify="center" className={styles['comm-main']}>
-      <Col xs={24} sm={24} md={16} lg={18} xl={14} className={styles['comm-left']}>
-        {props.children}
+      <Col xs={24} sm={24} md={16} lg={18} xl={14}>
+        <div className={styles['comm-left']}>{props.children}</div>
       </Col>
       <Col xs={0} sm={0} md={7} lg={5} xl={4} className={styles['comm-right']}>
         <Author />

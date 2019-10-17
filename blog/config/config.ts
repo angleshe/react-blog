@@ -139,6 +139,11 @@ export default {
           name: '首页',
           component: './home',
         },
+        {
+          path: 'detailed',
+          name: '详情',
+          component: './detailed',
+        },
       ],
     },
 
