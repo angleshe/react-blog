@@ -1,4 +1,6 @@
-const { strictEslint } = require('@umijs/fabric');
+let { strictEslint } = require('@umijs/fabric');
+
+strictEslint.rules['arrow-body-style'] = ['off', 'as-needed'];
 
 module.exports = {
   ...strictEslint,

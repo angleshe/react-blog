@@ -36,7 +36,10 @@ interface Window {
     fieldsObject: GAFieldsObject | string,
   ) => void;
 }
-
+interface ISSRFC<P, T = P> extends React.FC<P> {
+  // typescript-eslint/no-explicit-any
+  getInitialProps?: (param: any) => Promise<T>;
+}
 declare let ga: Function;
 
 // preview.pro.ant.design only do not use in your production ;

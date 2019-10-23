@@ -5,6 +5,8 @@ import styles from './item.less';
 export interface IArticle {
   title: string;
   context: string;
+  typeName: string;
+  viewCount: number;
 }
 
 const Item: (item: IArticle) => React.ReactNode = item => (
@@ -17,11 +19,11 @@ const Item: (item: IArticle) => React.ReactNode = item => (
       </span>
       <span>
         <Icon type="folder" />
-        视频教程
+        {item.typeName}
       </span>
       <span>
         <Icon type="fire" />
-        5498人
+        {item.viewCount}人
       </span>
     </div>
     <div className={styles.context}>{item.context}</div>
