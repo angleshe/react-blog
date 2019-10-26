@@ -13,26 +13,6 @@ import { notification } from 'antd';
  * @interface ResponseMessageModel
  * @template T 数据类型
  */
-export interface ResponseMessageModel<T = any> {
-  /**
-   * @description 数据
-   * @type {T}
-   * @memberof ResponseMessageModel
-   */
-  data?: T;
-  /**
-   * @description 信息
-   * @type {string}
-   * @memberof ResponseMessageModel
-   */
-  message: string;
-  /**
-   * @description 状态码
-   * @type {number}
-   * @memberof ResponseMessageModel
-   */
-  code: number;
-}
 
 const codeMessage = {
   200: '服务器成功返回请求的数据。',

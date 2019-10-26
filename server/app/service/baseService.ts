@@ -1,5 +1,5 @@
 import {Service} from 'egg'
-import {ResponseMessageModel} from '../model/ResponseMessageModel';
+import {ResponseMessageModel} from '../dto/ResponseMessageModel';
 /**
  * @description 服务基础抽象类,所有服务类必须继承实现该类
  * @author angle

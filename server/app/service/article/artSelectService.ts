@@ -1,5 +1,5 @@
 import {BaseService} from '../baseService'
-import {ArticleList} from '../../../../dto/ArticleListDto'
+import {ArticleList} from '../../dto/ArticleListDto'
 
 class ArtSelectService extends BaseService<ArticleList> {
   protected async ExecuteMethod(): Promise<void> {
