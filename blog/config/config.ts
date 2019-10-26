@@ -202,7 +202,7 @@ export default {
   ssr: true,
   proxy: {
     '/api/': {
-      target: 'http://localhost:7002',
+      target: 'http://localhost:7001',
       changeOrigin: true,
     },
   },

@@ -18,12 +18,14 @@ const Home: ISSRFC<IHomeProps> = props => {
 };
 Home.getInitialProps = async () => {
   const { data } = await getArticeList();
-  const list: IArticle[] = data.map<IArticle>(item => ({
-    title: item.title,
-    context: item.introduce,
-    typeName: item.typeName,
-    viewCount: item.view_count,
-  }));
+  const list: IArticle[] = data
+    ? data.map<IArticle>(item => ({
+        title: item.title,
+        context: item.introduce,
+        typeName: item.typeName,
+        viewCount: item.view_count,
+      }))
+    : [];
   return Promise.resolve({
     list,
   });
