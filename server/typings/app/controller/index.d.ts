@@ -3,13 +3,11 @@
 
 import 'egg';
 import ExportApiHome from '../../../app/controller/api/home';
-import ExportApiIndex from '../../../app/controller/api/index';
 
 declare module 'egg' {
   interface IController {
     api: {
       home: ExportApiHome;
-      index: ExportApiIndex;
     }
   }
 }

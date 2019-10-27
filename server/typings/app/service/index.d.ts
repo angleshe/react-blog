@@ -3,12 +3,14 @@
 
 import 'egg';
 import ExportBaseService from '../../../app/service/baseService';
+import ExportArticleArtDetSelectService from '../../../app/service/article/artDetSelectService';
 import ExportArticleArtSelectService from '../../../app/service/article/artSelectService';
 
 declare module 'egg' {
   interface IService {
     baseService: ExportBaseService;
     article: {
+      artDetSelectService: ExportArticleArtDetSelectService;
       artSelectService: ExportArticleArtSelectService;
     }
   }

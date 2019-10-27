@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
-import { Dispatch, AnyAction } from 'redux';
+import React from 'react';
+// import { Dispatch, AnyAction } from 'redux';
 import { Icon } from 'antd';
-import { connect } from 'dva';
+// import { connect } from 'dva';
 import ReactMarkdown from 'react-markdown';
 import styles from './index.less';
-import { DetailedModelState } from '@/models/detailed';
-import { ConnectState } from '@/models/connect';
+import { getArticle } from '@/services/artice';
+// import { DetailedModelState } from '@/models/detailed';
+// import { ConnectState } from '@/models/connect';
+import { ArticleDetail } from '@/dto/ArticleDto';
 
 const markdown: string =
   '# P01:课程介绍和环境搭建\n' +
@@ -43,49 +45,68 @@ const markdown: string =
   '>>> cccccccccc\n\n' +
   '``` var a=11; ```';
 
-interface IDetailed extends DetailedModelState {
-  dispatch: Dispatch<AnyAction>;
-}
+// interface IDetailed extends DetailedModelState {
+//   dispatch: Dispatch<AnyAction>;
+// }
 
-const Detailed: React.FC<IDetailed> = props => {
-  useEffect(() => {
-    if (props.content !== markdown) {
-      props.dispatch({
-        type: 'detailed/setContent',
-        payload: markdown,
-      });
-    }
-    return () => {
-      if (props.content) {
-        props.dispatch({
-          type: 'detailed/setContent',
-          payload: '',
-        });
-      }
-    };
-  });
+const Detailed: SSRFC<ArticleDetail> = props => {
+  // useEffect(() => {
+  //   console.log(props)
+  //   // if (props.content !== markdown) {
+  //   //   props.dispatch({
+  //   //     type: 'detailed/setContent',
+  //   //     payload: markdown,
+  //   //   });
+  //   // }
+  //   // return () => {
+  //   //   if (props.content) {
+  //   //     props.dispatch({
+  //   //       type: 'detailed/setContent',
+  //   //       payload: '',
+  //   //     });
+  //   //   }
+  //   // };
+
+  // });
   return (
     <div className={styles.detailed}>
-      <div className={styles.title}>React实战视频教程-技术胖Blog开发(更新08集)</div>
+      <div className={styles.title}>{props.title}</div>
       <div className={styles.info}>
         <span>
           <Icon type="calendar" /> 2019-06-28
         </span>
         <span>
-          <Icon type="folder" /> 视频教程
+          <Icon type="folder" /> {props.typeName}
         </span>
         <span>
-          <Icon type="fire" /> 5498人
+          <Icon type="fire" /> {props.view_count}人
         </span>
       </div>
+      <div>{props.content}</div>
       <div className={styles.content}>
-        <ReactMarkdown source={props.content} escapeHtml={false} />
+        <ReactMarkdown source={markdown} escapeHtml={false} />
       </div>
       <div>{props.content}</div>
     </div>
   );
 };
 
-export default connect((state: ConnectState) => ({
-  ...state.detailed,
-}))(Detailed);
+Detailed.getInitialProps = async ({ route, res }) => {
+  const { code, data } = await getArticle(parseInt(route.params.id, 10));
+  let result: Promise<ArticleDetail | void>;
+  if (code === 0) {
+    result = Promise.resolve(data as ArticleDetail);
+  } else {
+    result = Promise.resolve();
+    if (res) {
+      res.statusCode = 404;
+      res.end('Not found');
+    }
+  }
+  return result;
+};
+
+// export default connect((state: ConnectState) => ({
+//   ...state.detailed,
+// }))(Detailed);
+export default Detailed;

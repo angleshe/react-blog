@@ -36,9 +36,16 @@ interface Window {
     fieldsObject: GAFieldsObject | string,
   ) => void;
 }
-interface ISSRFC<P, T = P> extends React.FC<P> {
-  // typescript-eslint/no-explicit-any
-  getInitialProps?: (param: any) => Promise<T>;
+interface IInitalPropsParam {
+  route: any;
+  location: any;
+  store: any;
+  isServer: boolean;
+  req: any;
+  res: any;
+}
+interface SSRFC<P = void, T = P> extends React.FC<P> {
+  getInitialProps?: (param: IInitalPropsParam) => Promise<T | void>;
 }
 declare let ga: Function;
 

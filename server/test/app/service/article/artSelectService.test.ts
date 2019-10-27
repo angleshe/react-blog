@@ -2,7 +2,7 @@ import { Context } from 'egg';
 import {app, mock} from 'egg-mock/bootstrap'
 
 import * as assert from 'assert';
-import {ArticleList} from '../../../../app/dto/ArticleListDto'
+import {ArticleList} from '../../../../app/dto/ArticleDto'
 import {ResponseMessageModel} from '../../../../app/dto/ResponseMessageModel'
 describe('test/app/service/article/artSelectService', () => {
   let ctx: Context;

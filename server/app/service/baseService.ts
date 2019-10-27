@@ -46,7 +46,7 @@ export abstract class BaseService <R, P = void> extends Service {
    * @param {number} [code=1] code
    * @memberof BaseService
    */
-  protected setSuccessResult (data: R, message: string = '操作成功!', code: number = 1): void {
+  protected setSuccessResult(data: R, message: string = '操作成功!', code: number = 1): void {
     this.Result = {
       data,
       message,
@@ -62,23 +62,35 @@ export abstract class BaseService <R, P = void> extends Service {
    * @param {number} [code=0] code
    * @memberof BaseService
    */
-  protected setErrorResult (message: string = '服务器错误!', code: number = 0): void {
+  protected setErrorResult(message: string = '服务器错误!', code: number = 0): void {
     this.Result = {
       message,
       code
     }
   }
   /**
+   * @description 验证处理传入sevice参数
+   * @author angle
+   * @date 2019-10-27
+   * @protected
+   * @param {*} model 传入sevice参数
+   * @returns {Promise<P>} 处理完成参数
+   * @memberof BaseService
+   */
+  protected async Validate(model: P): Promise<P> {
+    return model
+  }
+  /**
    * @description 执行服务,服务类对外暴露唯一方法
    * @author angle
    * @date 2019-10-25
-   * @param {P} model 传入请求数据
+   * @param {any} model 传入请求数据
    * @returns {Promise<ResponseMessageModel<R>>} 返回结果
    * @memberof BaseService
    */
   public async Execute(model: P): Promise<ResponseMessageModel<R>> {
-    this.Parameter = model;
     try {
+      this.Parameter = await this.Validate(model);
       await this.ExecuteMethod();
     } catch (e) {
       this.setErrorResult(e)

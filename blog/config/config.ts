@@ -140,7 +140,7 @@ export default {
           component: './home',
         },
         {
-          path: 'detailed',
+          path: 'detailed/:id',
           name: '详情',
           component: './detailed',
         },

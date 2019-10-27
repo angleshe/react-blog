@@ -7,3 +7,7 @@ export interface ArticleListItem {
   view_count: number;
 }
 export type ArticleList = ArticleListItem[]
+
+export interface ArticleDetail extends ArticleListItem  {
+  content: string
+}
