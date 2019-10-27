@@ -4,6 +4,7 @@ import {app, mock} from 'egg-mock/bootstrap'
 import * as assert from 'assert';
 import {ArticleList} from '../../../../app/dto/ArticleDto'
 import {ResponseMessageModel} from '../../../../app/dto/ResponseMessageModel'
+import {isArray} from '../../../../app/utils/utils'
 describe('test/app/service/article/artSelectService', () => {
   let ctx: Context;
   before(() => {
@@ -40,6 +41,25 @@ describe('test/app/service/article/artSelectService', () => {
       let res: ResponseMessageModel<ArticleList> = await ctx.service.article.artSelectService.Execute()
       assert(res.code === 0)
       assert(res.message === 'error')
+    })
+    it('should database data model', async () => {
+      let res: ResponseMessageModel<ArticleList> = await ctx.service.article.artSelectService.Execute()
+      assert(res.code === 1)
+      if (res.code === 1) {
+        assert(res.data)
+        assert(isArray(res.data))
+        if (res.data) {
+          assert(res.data[0])
+          if (res.data[0]) {
+            let data = res.data[0]
+            assert(data.id !== undefined)
+            assert(data.introduce !== undefined)
+            assert(data.title !== undefined)
+            assert(data.typeName !== undefined)
+            assert(data.view_count !== undefined)
+          }
+        }
+      }
     })
   })
 })
