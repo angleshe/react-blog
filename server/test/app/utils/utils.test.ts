@@ -1,5 +1,5 @@
 import * as Utils from '../../../app/utils/utils'
-import assert = require('power-assert')
+import * as assert from 'assert';
 
 describe('test/app/utils/utils', () => {
   describe('type test', () => {
@@ -29,7 +29,8 @@ describe('test/app/utils/utils', () => {
       arrayTest3: []
     }
     const testKeys: string[] = Object.keys(testData)
-    describe('isArray', () => {
+
+    describe('isArray()', () => {
       it('should exit', () => {
         assert(Utils.isArray)
       })
@@ -40,7 +41,8 @@ describe('test/app/utils/utils', () => {
         })
       })
     })
-    describe('isObject', () => {
+
+    describe('isObject()', () => {
       it('should exit', () => {
         assert(Utils.isObject)
       })
@@ -48,6 +50,18 @@ describe('test/app/utils/utils', () => {
         it (testData[item].toString(), () => {
           let res = Utils.isObject(testData[item])
           assert(/^objectTest\d+$/.test(item) ? res : !res)
+        })
+      })
+    })
+
+    describe('isString()', () => {
+      it('should exit', () => {
+        assert(Utils.isString)
+      })
+      testKeys.forEach((item: string) => {
+        it (testData[item].toString(), () => {
+          let res = Utils.isString(testData[item])
+          assert(/^stringTest\d+$/.test(item) ? res : !res)
         })
       })
     })

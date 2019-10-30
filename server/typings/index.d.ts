@@ -1,5 +1,5 @@
 /// <reference path="./mysql.d.ts" />
-import 'egg';
+import 'egg'
 
 declare module 'egg' {
   interface Application {

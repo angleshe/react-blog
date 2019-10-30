@@ -20,6 +20,25 @@ function isType(param: any, type: string): boolean {
 export function isArray(param: any): boolean {
  return isType(param, 'Array')
 }
+/**
+ * @description 是否为对象
+ * @author angle
+ * @date 2019-10-28
+ * @export
+ * @param {*} param 待测参数
+ * @returns {boolean} 是否为对象
+ */
 export function isObject(param: any): boolean {
   return isType(param, 'Object')
+}
+/**
+ * @description 是否为字符串
+ * @author angle
+ * @date 2019-10-28
+ * @export
+ * @param {*} param 待测参数
+ * @returns {boolean} 是否为字符串
+ */
+export function isString(param: any): boolean {
+  return isType(param, 'String')
 }
