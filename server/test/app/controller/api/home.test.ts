@@ -1,6 +1,4 @@
 import mock, { MockApplication } from 'egg-mock'
-// import {ResponseMessageModel} from '../../../../app/dto/ResponseMessageModel'
-// import {ArticleList} from '../../../../app/dto/ArticleListDto'
 
 describe('test/app/controller/api/home.test.ts', () => {
   let app: MockApplication
@@ -18,9 +16,12 @@ describe('test/app/controller/api/home.test.ts', () => {
   })
   describe('GET /api/home/getArticleDetail/:id', () => {
     it('should status 200 and get the body', () => {
-      let testData: string = 'test'
-      app.mockService('article.artDetSelectService', 'Execute', testData)
-      return app.httpRequest().get('/api/home/getArticleDetail/1').expect(200).expect(testData)
+      let testId: string = '4'
+      async function testFunction (id: number): Promise<number> {
+        return id
+      }
+      app.mockService('article.artDetSelectService', 'Execute', testFunction)
+      return app.httpRequest().get(`/api/home/getArticleDetail/${testId}`).expect(200).expect(testId.toString())
     })
     it('error number params', () => {
       return app.httpRequest().get('/api/home/getArticleDetail/asjd').expect(404)
