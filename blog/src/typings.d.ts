@@ -44,7 +44,7 @@ interface IInitalPropsParam {
   req: any;
   res: any;
 }
-interface SSRFC<P = void, T = P> extends React.FC<P> {
+interface SSRFC<T = {}, P extends T = T> extends React.FC<P> {
   getInitialProps?: (param: IInitalPropsParam) => Promise<T | void>;
 }
 declare let ga: Function;

@@ -89,6 +89,11 @@ export default (config: any) => {
         },
       },
     });
+  config.module.rule('less').test(/\.less$/).use('style-resources-loader').loader('style-resources-loader').options({
+    patterns: [
+      path.resolve(__dirname, '../src/utils/utils.less')
+    ]
+  })
 };
 
 const getAntdSerials = (color: string) => {

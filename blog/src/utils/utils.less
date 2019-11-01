@@ -1,3 +1,6 @@
+/**
+ * 一行显示文本,超出...代替
+ */
 .textOverflow() {
   overflow: hidden;
   white-space: nowrap;
@@ -47,4 +50,42 @@
     font-size: 0;
     visibility: hidden;
   }
+}
+
+
+/**
+ * 添加默认单位    为没有单位的数值添加单位
+ * @param  {number} $num 数值
+ * @param  {string} $unit 单位  默认px
+ * @return {number} 带单位的数值
+ */
+ .function-add-unit(@num, @unit: px) {
+  return: if((isnumber(@num) and not(ispercentage(@num))), unit(@num, @unit), @num);
+}
+/**
+ * 删除单位
+ * @param  {number} $num 要删除单位的值
+ * @return {number}  删除单位的值
+ */
+.function-remove-unit(@num) {
+  return: unit(@num);
+}
+/**
+ * 长宽
+ * @param {number} $w width
+ * @param {number} $h height
+ */
+.wh (@w, @h: @w) {
+  width: add-unit(@w);
+  height: add-unit(@h);
+}
+/**
+ * 文本居中
+ * @param {number} $h height
+ */
+.textCenter(@h) {
+  @height: add-unit(@h);
+  height: @height;
+  line-height: @height;
+  text-align: center;
 }

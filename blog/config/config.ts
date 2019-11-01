@@ -5,6 +5,8 @@ import slash from 'slash2';
 import webpackPlugin from './plugin.config';
 const { pwa, primaryColor } = defaultSettings;
 
+const LessFunc = require('less-plugin-functions')
+
 // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 const { ANT_DESIGN_PRO_ONLY_DO_NOT_USE_IN_YOUR_PRODUCTION } = process.env;
@@ -144,6 +146,11 @@ export default {
           name: '详情',
           component: './detailed',
         },
+        {
+          path: 'shopList',
+          name: '商店列表',
+          component: './shopList'
+        }
       ],
     },
 
@@ -162,6 +169,9 @@ export default {
   ignoreMomentLocale: true,
   lessLoaderOptions: {
     javascriptEnabled: true,
+    plugins: [
+      new LessFunc()
+    ]
   },
   disableRedirectHoist: true,
   cssLoaderOptions: {

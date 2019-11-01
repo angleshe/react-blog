@@ -1,0 +1,51 @@
+.shop-item {
+  padding: 20px;
+  background-color: #fff;
+  &:not(:nth-child(1)) {
+    margin-top: 30px;
+  }
+  .shop {
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .shop-img {
+      .wh(120, 80);
+      flex-shrink: 0;
+    }
+    .content {
+      margin-left: 10px;
+      flex: 1;
+    }
+  }
+  .food-list {
+    display: flex;
+    .food-item {
+      width: 100px;
+      &:not(:nth-child(1)) {
+        margin-left: 30px;
+      }
+      .foot-head {
+        .wh(100%, 70);
+        position: relative;
+        .food-price {
+          width: 100%;
+          .textCenter(18);
+          font-size: 12px;
+          background-color: rgba(0, 0, 0, 0.5);
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          color: #fff
+        }
+      }
+      .food-name {
+        padding: 5px;
+        .textCenter(30);
+        font-size: 15px;
+        .textOverflow;
+      }
+    }
+
+  }
+}
