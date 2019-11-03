@@ -9,8 +9,8 @@ interface IImageProp {
  defaultSrc?: string;
 }
 function isShow (dom: HTMLElement): boolean {
-  let top: number = dom.getBoundingClientRect().top + dom.offsetHeight
-  return top > 0 && top < document.body.clientHeight
+  let top: number = dom.getBoundingClientRect().top
+  return top + dom.offsetHeight > 0 && top < document.body.clientHeight
 }
 const Image: React.FC<IImageProp> = props => {
   let imgRef: React.RefObject<HTMLImageElement>  = useRef<HTMLImageElement>(null);
