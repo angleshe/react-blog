@@ -67,3 +67,24 @@ export function isObject(param: any): boolean {
 export function isString(param: any): boolean {
   return isType(param, 'String')
 }
+/**
+ * @description 防抖
+ * @author angle
+ * @date 2019-11-03
+ * @export
+ * @param {() => void} fn 处理函数
+ * @param {number} [time=500] 节流时长
+ * @returns {() => void} 防抖函数
+ */
+export function debounce(fn: () => void, time: number = 500): () => void {
+  let timer: number = 0
+  return () => {
+    if (timer !== 0) {
+      window.clearTimeout(timer)
+    }
+    timer = window.setTimeout(() => {
+      fn()
+      timer = 0
+    }, time)
+  }
+}
